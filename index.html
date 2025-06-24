@@ -3,383 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audit Report R9 Q2/68</title>
+    <title>Combined Audit Report (Full Length)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Chart.js and plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
     <style>
         body {
             font-family: 'Kanit', sans-serif;
-            background-color: #e5e7eb; /* A neutral gray background */
+            background-color: #f3f4f6; /* A light gray background for contrast */
         }
-        .iframe-container {
-            border: 1px solid #d1d5db;
+        .report-section {
+            background-color: white;
             border-radius: 0.75rem;
-            overflow: hidden;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem; /* Space between iframes */
+            margin-bottom: 3rem; /* Generous space between report sections */
+            overflow: hidden; /* Ensures child margins don't collapse */
         }
-        .iframe-header {
-            background-color: #4b5563;
+        .report-header-title {
+            background-color: #1f2937;
             color: white;
-            padding: 0.75rem 1.25rem;
-            font-weight: 600;
-            border-bottom: 1px solid #374151;
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
         }
-        iframe {
-            width: 100%;
-            height: 80vh; /* Set a substantial height to view content */
-            display: block;
-            border: none;
+        .report-content {
+            padding: 1.5rem;
+        }
+        /* Style for the main page title */
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #d1d5db;
+        }
+         /* Simple loader for sections */
+        .loader-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
         }
     </style>
 </head>
 <body class="p-4 sm:p-6 md:p-8">
 
-    <div class="max-w-screen-xl mx-auto">
-        <h1 class="text-4xl font-bold text-gray-800 text-center mb-8">ตัวอย่างหน้าเว็บรายงานผลการตรวจสอบ</h1>
+    <div class="max-w-screen-lg mx-auto">
+        <h1 class="main-title">รายงานผลการตรวจสอบ ฉบับรวม</h1>
 
-        <!-- Iframe for Header -->
-        <div class="iframe-container">
-            <div class="iframe-header">ส่วนหัว (Header)</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Operation Audit Department Header</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap' rel='stylesheet'>
-    <style>
-        body {
-            font-family: 'Kanit', sans-serif;
-        }
-    </style>
-</head>
-<body class='h-screen'>
-    <header class='bg-white dark:bg-gray-800 shadow-md h-screen flex items-center justify-center'>
-        <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div class='text-center'>
-                <h1 class='text-5xl font-bold leading-tight text-gray-900 dark:text-white'>
-                    B018 RAMA9 รอบไตรมาส 2/68
-                </h1>
-                <p class='mt-1 text-lg text-gray-500 dark:text-gray-400'>
-                    (ชาแนล iStudio&iBeat)
-                </p>
-            </div>
-        </div>
-    </header>
-</body>
-</html>
-            "></iframe>
-        </div>
-
-        <!-- Iframe for Dashboard -->
-        <div class="iframe-container">
-            <div class="iframe-header">แดชบอร์ดติดตามผลการตรวจสอบ</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>แดชบอร์ดติดตามผลการตรวจสอบ - iStudio Central Rama 9</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap' rel='stylesheet'>
-    <script type='module' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js'></script>
-    <script nomodule src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
-    <style>
-        body { font-family: 'Kanit', sans-serif; }
-        #loader { display: flex; }
-        .modal-overlay { background-color: rgba(0, 0, 0, 0.5); }
-    </style>
-</head>
-<body class='bg-gray-100'>
-    <div class='flex items-center justify-center min-h-screen p-2 sm:p-4'>
-        <div class='w-full max-w-7xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-200'>
-            <div id='loader' class='flex-col justify-center items-center h-64' style='display: none;'>
-                <!-- Loader SVG -->
-                <p id='loader-text' class='mt-4 text-gray-600'>กำลังโหลดข้อมูล...</p>
-            </div>
-            <div id='password-modal' class='fixed inset-0 items-center justify-center z-50 hidden modal-overlay'>
-                <!-- Password modal content -->
-            </div>
-            <div id='main-content'>
-                <div class='flex flex-col sm:flex-row justify-between sm:items-center mb-8 border-b pb-4 gap-4'>
-                    <div>
-                        <h1 class='text-2xl md:text-3xl font-bold text-gray-800'>สรุปผลการตรวจสอบ (Audit Follow-up)</h1>
-                        <p class='text-gray-500 mt-1'>สาขา: iStudio Central Rama 9 (S-CR) | รอบการตรวจสอบ: 17-18 มิถุนายน 2568</p>
-                    </div>
-                    <div class='flex items-center gap-4'>
-                        <div id='save-status' class='text-sm text-gray-500 flex items-center transition-opacity duration-300 opacity-0'>
-                            <ion-icon name='cloud-done-outline' class='mr-2 text-green-500'></ion-icon>
-                            <span>บันทึกแล้ว</span>
-                        </div>
-                        <button id='save-btn' class='px-5 py-2.5 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'>
-                            บันทึกการเปลี่ยนแปลง
-                        </button>
+        <!-- Section 1: Header -->
+        <section class="report-section">
+            <header class="bg-white dark:bg-gray-800 shadow-md flex items-center justify-center py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <h1 class="text-5xl font-bold leading-tight text-gray-900 dark:text-white">
+                            B018 RAMA9 รอบไตรมาส 2/68
+                        </h1>
+                        <p class="mt-1 text-lg text-gray-500 dark:text-gray-400">
+                            (ชาแนล iStudio&iBeat)
+                        </p>
                     </div>
                 </div>
-                <div class='mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg'>
-                    <h2 class='text-xl font-bold text-blue-800 mb-2'>บทสรุปสำหรับผู้บริหาร</h2>
-                    <p class='text-gray-700'>ภาพรวมการปฏิบัติงานของสาขาอยู่ในเกณฑ์ดี โดยมีการพัฒนาที่เห็นได้ชัดในด้านการจัดระเบียบสต็อกสินค้า อย่างไรก็ตาม ยังมีข้อตรวจพบสำคัญในด้านการบริหารเงินสด, การควบคุมสต็อก, และความปลอดภัยที่ต้องได้รับการแก้ไขโดยเร่งด่วนเพื่อลดความเสี่ยงในการดำเนินงาน</p>
-                </div>
-                <div id='dashboard-metrics' class='grid grid-cols-2 md:grid-cols-4 gap-4 mb-6'>
-                    <div class='bg-gray-100 p-4 rounded-lg text-center'><h4 class='font-bold text-gray-600'>ข้อตรวจพบทั้งหมด</h4><p id='total-findings' class='text-3xl font-bold text-gray-800'>8</p></div>
-                    <div class='bg-red-50 p-4 rounded-lg text-center'><h4 class='font-bold text-red-600'>คงค้าง</h4><p id='pending-findings' class='text-3xl font-bold text-red-800'>4</p></div>
-                    <div class='bg-green-50 p-4 rounded-lg text-center'><h4 class='font-bold text-green-600'>ดำเนินการแล้ว</h4><p id='completed-findings' class='text-3xl font-bold text-green-800'>4</p></div>
-                    <div class='bg-indigo-50 p-4 rounded-lg text-center'><h4 class='font-bold text-indigo-600'>เกินกำหนด</h4><p id='overdue-findings' class='text-3xl font-bold text-indigo-800'>1</p></div>
+            </header>
+        </section>
+
+        <!-- Section 2: Dashboard -->
+        <section class="report-section">
+            <h2 class="report-header-title">แดชบอร์ดติดตามผลการตรวจสอบ</h2>
+            <div id="dashboard-content" class="report-content">
+                <!-- Dashboard Content will be loaded here -->
+                 <div class="loader-container">
+                    <svg class="animate-spin h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Petty Cash -->
+        <section class="report-section">
+            <h2 class="report-header-title">1. รายงานการใช้เงินสดย่อย</h2>
+            <div class="report-content">
+                <!-- Petty Cash Content -->
+                 <div class='border-b pb-4 mb-6'>
+                    <h1 class='text-2xl md:text-3xl font-bold text-gray-800'>รายงานการใช้เงินสดย่อย สาขา B018 iStudio RAMA9</h1>
+                    <p class='text-gray-500 mt-1'>ข้อมูลจากรอบไตรมาสตรวจสอบ 1 และ 2 ปี 2568</p>
                 </div>
                 <div class='mb-8'>
-                    <div class='flex justify-between mb-1'><span class='text-base font-medium text-blue-700'>ความคืบหน้าการแก้ไข</span><span id='progress-percentage' class='text-sm font-medium text-blue-700'>50%</span></div>
-                    <div class='w-full bg-gray-200 rounded-full h-2.5'><div id='progress-bar' class='bg-blue-600 h-2.5 rounded-full' style='width: 50%'></div></div>
+                    <h2 class='text-xl font-semibold text-gray-700 mb-4 text-center'>ยอดการใช้เงินสดย่อยเทียบกับวงเงินที่กำหนด</h2>
+                    <div class='relative h-64 md:h-96'><canvas id='pettyCashChart'></canvas></div>
+                    <p class='text-center text-sm text-gray-500 mt-2'>***วงเงินสดย่อยกำหนดไว้ที่ 3,000 บาท***</p>
                 </div>
                 <div>
-                    <h2 class='text-xl font-semibold text-gray-700 mb-4'>ตารางสรุปข้อตรวจพบที่ต้องดำเนินการ</h2>
-                    <div class='overflow-x-auto rounded-lg border'>
-                        <table class='w-full text-left text-sm whitespace-nowrap'><thead class='bg-gray-100 border-b'><tr><th class='px-4 py-3 font-semibold text-gray-600'>ลำดับ</th><th class='px-4 py-3 font-semibold text-gray-600'>รายละเอียดข้อตรวจพบ</th><th class='px-4 py-3 font-semibold text-gray-600'>ผู้รับผิดชอบ</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>กำหนดแล้วเสร็จ</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>สถานะ</th></tr></thead><tbody id='findings-table-body'><tr class='border-b bg-green-50 hover:bg-green-100 text-gray-500 line-through transition-colors duration-300'><td class='px-4 py-3 text-center'>1</td><td class='px-4 py-3 font-medium'>รายงานการใช้เงินสดย่อย</td><td class='px-4 py-3'>ผู้จัดการสาขา</td><td class='px-4 py-3 text-center'><input type='date' class='date-input w-full p-1 border border-transparent rounded-md text-sm text-center bg-transparent hover:bg-gray-100 focus:bg-white focus:border-blue-500 ' value='2025-06-25' data-id='1'></td><td class='px-4 py-3 text-center'><select class='status-select w-full p-1.5 border border-gray-300 rounded-md text-xs focus:ring-blue-500 focus:border-blue-500 bg-white' data-id='1'><option value='คงค้าง'>คงค้าง</option><option value='ดำเนินการแล้ว' selected=''>ดำเนินการแล้ว</option></select></td></tr><tr class='border-b bg-white hover:bg-gray-50 transition-colors duration-300'><td class='px-4 py-3 text-center'>2</td><td class='px-4 py-3 font-medium'>รายงานผลต่างสต๊อกสินค้า</td><td class='px-4 py-3'>ผู้จัดการสาขา</td><td class='px-4 py-3 text-center'><input type='date' class='date-input w-full p-1 border border-transparent rounded-md text-sm text-center bg-transparent hover:bg-gray-100 focus:bg-white focus:border-blue-500 ' value='2025-06-30' data-id='2'></td><td class='px-4 py-3 text-center'><select class='status-select w-full p-1.5 border border-gray-300 rounded-md text-xs focus:ring-blue-500 focus:border-blue-500 bg-white' data-id='2'><option value='คงค้าง' selected=''>คงค้าง</option><option value='ดำเนินการแล้ว'>ดำเนินการแล้ว</option></select></td></tr></tbody></table>
-                    </div>
+                    <h2 class='text-xl font-semibold text-gray-700 mb-4'>สรุปข้อมูลการเบิกจ่าย</h2>
+                    <div class='overflow-x-auto rounded-lg border'><table class='w-full text-left text-sm'><thead class='bg-gray-100 border-b'><tr><th scope='col' class='px-6 py-3 font-semibold text-gray-600'>รอบการเบิกจ่าย (ปี 2568)</th><th scope='col' class='px-6 py-3 font-semibold text-gray-600 text-right'>ยอดใช้เงินสดย่อยสุทธิ (บาท)</th><th scope='col' class='px-6 py-3 font-semibold text-gray-600 text-center'>สถานะ</th></tr></thead><tbody><tr class='bg-white border-b hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 2</td><td class='px-6 py-4 text-right'>7,433.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr><tr class='bg-white border-b hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 3</td><td class='px-6 py-4 text-right'>4,956.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr><tr class='bg-white border-b hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 5</td><td class='px-6 py-4 text-right'>5,734.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr><tr class='bg-white hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 6</td><td class='px-6 py-4 text-right'>5,195.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr></tbody></table></div>
                 </div>
+                <div class='mt-8 pt-6 border-t border-dashed'><h2 class='text-xl font-semibold text-gray-700 mb-4 flex items-center'><ion-icon name="bulb-outline" class="mr-2 text-blue-500 text-2xl"></ion-icon>ข้อเสนอแนะจากผู้ตรวจสอบ</h2><div class='bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-lg'><p class='font-semibold'>จากข้อมูลข้างต้น ผู้ตรวจสอบมีความเห็นว่า ควรพิจารณาปรับวงเงินสดย่อย โดยคำนวนจาก</p><ul class='list-disc list-inside mt-2 space-y-1 text-sm'><li>ค่ามัธยฐาน = 5,829.5 + 3% สำหรับความยืดหยุ่น</li><li class='font-bold'>วงเงินสดย่อยที่เหมาะสม = <span class='text-lg'>6,000.00 บาท</span></li></ul></div></div>
             </div>
-        </div>
-    </div>
-</body>
-</html>
-            "></iframe>
-        </div>
+        </section>
 
-        <!-- Iframe for Petty Cash Report -->
-        <div class="iframe-container">
-            <div class="iframe-header">1. รายงานการใช้เงินสดย่อย</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>รายงานการใช้เงินสดย่อย</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js'></script>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap' rel='stylesheet'>
-    <style>body { font-family: 'Kanit', sans-serif; }</style>
-</head>
-<body class='bg-gray-100'>
-    <div class='flex items-center justify-center min-h-screen p-2 sm:p-4'>
-        <div class='w-full max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-200'>
-            <div class='border-b pb-4 mb-6'>
-                <h1 class='text-2xl md:text-3xl font-bold text-gray-800'>1. รายงานการใช้เงินสดย่อย สาขา B018 iStudio RAMA9</h1>
-                <p class='text-gray-500 mt-1'>ข้อมูลจากรอบไตรมาสตรวจสอบ 1 และ 2 ปี 2568</p>
+        <!-- Section 4: Stock Discrepancy -->
+        <section class="report-section">
+            <h2 class="report-header-title">2. รายงานผลต่างสต๊อกสินค้า</h2>
+            <div id="stock-discrepancy-content" class="report-content">
+                 <!-- Stock Discrepancy Content will be loaded here -->
+                 <div class="loader-container">
+                    <svg class="animate-spin h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                 </div>
             </div>
-            <div class='mb-8'>
-                <h2 class='text-xl font-semibold text-gray-700 mb-4 text-center'>ยอดการใช้เงินสดย่อยเทียบกับวงเงินที่กำหนด</h2>
-                <div class='relative h-64 md:h-96'><canvas id='pettyCashChart'></canvas></div>
-                <p class='text-center text-sm text-gray-500 mt-2'>***วงเงินสดย่อยกำหนดไว้ที่ 3,000 บาท***</p>
+        </section>
+
+        <!-- Section 5: Pending Transfer -->
+        <section class="report-section">
+            <h2 class="report-header-title">3. รายงานการโอนสินค้าออกค้างรับในระบบ</h2>
+            <div class="report-content">
+                <!-- Pending Transfer Content -->
+                <div class='text-center mb-6 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>รายงานการโอนสินค้าออกค้างรับในระบบ (Pending Receive)</h1></div>
+                <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-3'>1. รายละเอียดของรายการ (Transaction Details)</h3><div class='overflow-x-auto rounded-lg border'><table class='w-full text-left text-sm'><tbody><tr class='border-b'><th class='w-1/3 bg-gray-50 font-medium text-gray-600'>เลขที่เอกสารโอน</th><td class='text-gray-800'><code>STB018250322003</code></td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>วันที่และเวลาโอน</th><td class='text-gray-800'>22 มีนาคม 2568, 20:54 น.</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>SKU</th><td class='text-gray-800'><code>MTL23FE/A</code></td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>รายละเอียดสินค้า</th><td class='text-gray-800'>APPLE MTL23FE/A 41MM GAME ROYAL/ORANGE NIKE SPORT LOOP</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>จำนวน</th><td class='text-gray-800'>1 ชิ้น</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>Serial No.</th><td class='text-gray-800'><code>240800665</code></td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>ผู้ดำเนินการ</th><td class='text-gray-800'>สมาพร บุญโฉม (000110)</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>สถานะปัจจุบัน</th><td class='text-red-600 font-bold'>Pending Receive</td></tr><tr><th class='bg-gray-50 font-medium text-gray-600 align-top'>หมายเหตุจากสาขา</th><td class='text-gray-800'>สินค้าสมนาคุณให้ลูกค้าที่ร้องเรียนเรื่องซื้อ iPad ไปแล้วเห็นประกาศว่าลดราคา 7,000 บาท (คุณหมู)</td></tr></tbody></table></div></div>
+                <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-3'>2. สาเหตุและผลกระทบ (Root Cause & Impact)</h3><p class='text-gray-700 mb-2'><strong class='font-semibold text-gray-600'>สาเหตุ:</strong> สาขาได้นำสินค้าไปมอบให้ลูกค้าเป็นกรณีพิเศษเพื่อส่งเสริมการขาย แต่ไม่ได้ดำเนินการผ่านกระบวนการขออนุมัติตัดสต๊อกสินค้าที่ถูกต้อง ทำให้รายการยังคงค้างอยู่ในระบบการโอนย้าย</p><p class='text-gray-700 mb-2'><strong class='font-semibold text-gray-600'>ผลกระทบ:</strong></p><ul class='list-disc list-inside text-gray-700 space-y-1'><li>รายการถูกทิ้งค้างรับในระบบ และไม่ถูกตัดออกเป็นส่วนของค่าใช้จ่ายตามความเป็นจริง</li></ul></div>
+                <div><h3 class='text-lg font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-3'>3. ข้อเสนอแนะ (Recommendation)</h3><p class='text-gray-700 mb-3'>เพื่อให้การดำเนินงานถูกต้องและป้องกันปัญหาในอนาคต ผู้ตรวจสอบขอเสนอแนะให้ผู้จัดการสาขาและผู้ที่เกี่ยวข้องดำเนินการดังนี้:</p><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong>ดำเนินการแก้ไขให้ถูกต้อง:</strong> ให้สาขาดำเนินการตามกระบวนการ <strong>'ขอตัดสินค้าเพื่อส่งเสริมการขาย'</strong> สำหรับรายการดังกล่าวให้ถูกต้องและสมบูรณ์</li><li><strong>ปิดรายการที่ค้างในระบบ:</strong> ประสานงานกับฝ่ายที่เกี่ยวข้องเพื่อดำเนินการปิดสถานะของใบโอน <code>STB018250322003</code> ในระบบให้เรียบร้อย</li><li><strong>ทบทวนกระบวนการ:</strong> สื่อสารขั้นตอนการเบิก/ตัดสต๊อกสินค้าสำหรับกรณีส่งเสริมการขายหรือกรณีพิเศษอื่นๆ เพื่อให้มั่นใจว่าทุกรายการจะถูกบันทึกอย่างถูกต้องในอนาคต</li></ol></div>
             </div>
-            <div>
-                <h2 class='text-xl font-semibold text-gray-700 mb-4'>สรุปข้อมูลการเบิกจ่าย</h2>
-                <div class='overflow-x-auto rounded-lg border'><table class='w-full text-left text-sm'><thead class='bg-gray-100 border-b'><tr><th scope='col' class='px-6 py-3 font-semibold text-gray-600'>รอบการเบิกจ่าย (ปี 2568)</th><th scope='col' class='px-6 py-3 font-semibold text-gray-600 text-right'>ยอดใช้เงินสดย่อยสุทธิ (บาท)</th><th scope='col' class='px-6 py-3 font-semibold text-gray-600 text-center'>สถานะ</th></tr></thead><tbody><tr class='bg-white border-b hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 2</td><td class='px-6 py-4 text-right'>7,433.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr><tr class='bg-white border-b hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 3</td><td class='px-6 py-4 text-right'>4,956.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr><tr class='bg-white border-b hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 5</td><td class='px-6 py-4 text-right'>5,734.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr><tr class='bg-white hover:bg-red-50'><td class='px-6 py-4 font-medium text-gray-900'>เดือน 6</td><td class='px-6 py-4 text-right'>5,195.00</td><td class='px-6 py-4 text-center'><span class='px-3 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full'>เกินวงเงิน</span></td></tr></tbody></table></div>
+        </section>
+
+        <!-- Section 6: Pending PO -->
+        <section class="report-section">
+            <h2 class="report-header-title">4. รายงาน PO ค้างรับนานผิดปกติ</h2>
+            <div class="report-content">
+                <!-- Pending PO Content -->
+                <div class='mb-6 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>รายงาน PO รับเข้าจากการสั่งซื้อค้างนานผิดปกติ</h1><p class='text-gray-500 mt-1'>สาขา: B018 iStudio Central Rama 9 | ณ วันที่: 18 มิถุนายน 2568</p></div>
+                <div class='grid grid-cols-1 md:grid-cols-3 gap-4 mb-8'><div class='bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg'><h4 class='font-bold text-blue-800'>PO ค้างรับทั้งหมด</h4><p class='text-3xl font-bold text-blue-600'>13 <span class='text-lg font-normal'>รายการ</span></p></div><div class='bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg'><h4 class='font-bold text-yellow-800'>เคลียร์แล้ว</h4><p class='text-3xl font-bold text-yellow-600'>11 <span class='text-lg font-normal'>รายการ</span></p></div><div class='bg-red-50 border-l-4 border-red-500 p-4 rounded-lg'><h4 class='font-bold text-red-800'>คงค้างรอดำเนินการ</h4><p class='text-3xl font-bold text-red-600'>2 <span class='text-lg font-normal'>รายการ</span></p></div></div>
+                <div><h2 class='text-xl font-semibold text-gray-700 mb-4'>รายละเอียดใบสั่งซื้อ (PO) ที่ค้างรับในระบบ</h2><div class='overflow-x-auto rounded-lg border'><table class='w-full text-left text-sm whitespace-nowrap'><thead class='bg-gray-100 border-b'><tr><th class='px-4 py-3 font-semibold text-gray-600'>ลำดับ</th><th class='px-4 py-3 font-semibold text-gray-600'>เลขที่ PO</th><th class='px-4 py-3 font-semibold text-gray-600'>วันที่สร้าง</th><th class='px-4 py-3 font-semibold text-gray-600'>อายุ (วัน)</th><th class='px-4 py-3 font-semibold text-gray-600'>ประเภท</th><th class='px-4 py-3 font-semibold text-gray-600'>รายละเอียด</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>สถานะ</th></tr></thead><tbody id='po-table-body'></tbody></table></div></div>
+                <div class='mt-8'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-3'>5. ข้อเสนอแนะ (Recommendation)</h3><p class='text-gray-700 mb-3'>เพื่อให้สถานะ PO ในระบบตรงตามความเป็นจริง และลดการสับสนสำหรับการทำงานในอนาคต ผู้ตรวจสอบขอเสนอแนะดังนี้:</p><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong>Apple Care:</strong> ให้ผู้ที่รับผิดชอบดำเนินการตรวจสอบและปิดรายการ PO Apple Care ทั้ง 2 รายการที่ยังคงค้างอยู่ เนื่องจากเป็นรายการที่ค้างนานมากแล้ว</li><li><strong>กำหนดรอบการตรวจสอบ:</strong> ตั้งรอบการตรวจสอบ PO ค้างรับในระบบเป็นประจำ (เช่น ทุกสิ้นเดือน) เพื่อป้องกันการเกิดรายการสะสมค้างนานในอนาคต และเคลียร์รายการที่ไม่จำเป็นออกจากระบบ</li></ol></div>
             </div>
-            <div class='mt-8 pt-6 border-t border-dashed'><h2 class='text-xl font-semibold text-gray-700 mb-4 flex items-center'>ข้อเสนอแนะจากผู้ตรวจสอบ</h2><div class='bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-lg'><p class='font-semibold'>จากข้อมูลข้างต้น ผู้ตรวจสอบมีความเห็นว่า ควรพิจารณาปรับวงเงินสดย่อย โดยคำนวนจาก</p><ul class='list-disc list-inside mt-2 space-y-1 text-sm'><li>ค่ามัธยฐาน = 5,829.5 + 3% สำหรับความยืดหยุ่น</li><li class='font-bold'>วงเงินสดย่อยที่เหมาะสม = <span class='text-lg'>6,000.00 บาท</span></li></ul></div></div>
-        </div>
+        </section>
+
+        <!-- Section 7: On-Hand/Serial Mismatch -->
+        <section class="report-section">
+            <h2 class="report-header-title">5. รายงานจำนวน On-Hand และ Serial On-Hand ไม่สอดคล้องกัน</h2>
+            <div class="report-content">
+                <!-- OH/SOH Mismatch Content -->
+                <div class='mb-8 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>รายงานจำนวนสินค้า (On-Hand) และ (Serial On-Hand) ไม่สอดคล้องกัน</h1><p class='text-sm text-gray-500 mt-2'>สาขา: B018 iStudio Central Rama 9 | ณ วันที่: 18 มิถุนายน 2568</p></div>
+                <div class='bg-orange-50 border-l-4 border-orange-500 text-orange-800 p-4 rounded-lg mb-8 flex items-center'><ion-icon name='alert-circle-outline' class='text-3xl mr-4'></ion-icon><div><p class='font-bold'>สรุปข้อตรวจพบ</p><p>พบสินค้าจำนวน <strong class='font-semibold'>3 รายการ</strong> ที่มีจำนวนในรายงาน On-Hand (OH) และรายงาน Serial On-Hand (SOH) ไม่ตรงกัน ซึ่งอาจส่งผลกระทบต่อความถูกต้องของสต๊อกสินค้า</p></div></div>
+                <div class='space-y-6'><h2 class='text-xl font-semibold text-gray-700 mb-4'>รายการสินค้าที่พบปัญหา</h2><div class='border rounded-lg p-4 bg-white shadow-sm'><div class='flex justify-between items-start'><div><p class='font-bold text-lg text-gray-800'>1. APPLE AIRPODS</p><p class='text-sm font-mono text-gray-500'>SKU: MXP63ZA/A</p></div><div class='text-right'><p class='font-bold text-2xl text-red-600'>-2</p><p class='text-xs text-gray-500'>ส่วนต่าง</p></div></div><div class='grid grid-cols-3 gap-2 text-center my-4'><div class='bg-blue-50 p-2 rounded'><p class='text-sm text-blue-800'>On-Hand</p><p class='font-bold text-xl text-blue-900'>31</p></div><div class='bg-red-50 p-2 rounded'><p class='text-sm text-red-800'>Serial On-Hand</p><p class='font-bold text-xl text-red-900'>29</p></div><div class='bg-gray-100 p-2 rounded'><p class='text-sm text-gray-800'>มูลค่าต่อหน่วย</p><p class='font-bold text-xl text-gray-900'>4,990</p></div></div><div class='text-sm'><p><strong class='font-semibold'>รายละเอียด/สาเหตุ:</strong> พบความผิดปกติจากบิล <strong>B018-P02-25052200025</strong> (ส่วนต่าง 1 ชิ้น) และอีก 1 ชิ้นอยู่ระหว่างการตรวจสอบหาสาเหตุ</p></div></div><div class='border rounded-lg p-4 bg-white shadow-sm'><div class='flex justify-between items-start'><div><p class='font-bold text-lg text-gray-800'>2. APPLE USB-C TO 3.5 MM ADAPTER</p><p class='text-sm font-mono text-gray-500'>SKU: MW2Q3ZA/A</p></div><div class='text-right'><p class='font-bold text-2xl text-red-600'>-1</p><p class='text-xs text-gray-500'>ส่วนต่าง</p></div></div><div class='grid grid-cols-3 gap-2 text-center my-4'><div class='bg-blue-50 p-2 rounded'><p class='text-sm text-blue-800'>On-Hand</p><p class='font-bold text-xl text-blue-900'>10</p></div><div class='bg-red-50 p-2 rounded'><p class='text-sm text-red-800'>Serial On-Hand</p><p class='font-bold text-xl text-red-900'>9</p></div><div class='bg-gray-100 p-2 rounded'><p class='text-sm text-gray-800'>มูลค่าต่อหน่วย</p><p class='font-bold text-xl text-gray-900'>390</p></div></div><div class='text-sm'><p><strong class='font-semibold'>รายละเอียด/สาเหตุ:</strong> พบความผิดปกติจากบิล <strong>B018-P02-25052200023</strong></p></div></div></div>
+                <div class='mt-10'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-3'>ข้อเสนอแนะ (Recommendation)</h3><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong>ตรวจสอบบิลที่เกี่ยวข้อง:</strong> ให้ผู้จัดการสาขาแจ้งพี่ม่อม @Arpaporn Khungaiwong <arpaporn@spvi.co.th> ดำเนินการตรวจสอบบิลขายทั้ง 3 บิล เพื่อหาสาเหตุ และปรับปรุงสต็อคให้ถูกต้อง</li></ol></div>
+            </div>
+        </section>
+
+        <!-- Section 8: Security Report -->
+        <section class="report-section">
+            <h2 class="report-header-title">6. รายงานระบบป้องกันการโจรกรรมสินค้า</h2>
+            <div class="report-content">
+                <!-- Security Content -->
+                <div class='mb-8 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>รายงานระบบป้องกันการโจรกรรมสินค้า (RFID และเสากันขโมย)</h1><p class='text-sm text-gray-500 mt-2'>สาขา: B018 iStudio Central Rama 9 | ณ วันที่: 18 มิถุนายน 2568</p></div>
+                <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-red-500 pb-2 mb-3 flex items-center'>1. ข้อตรวจพบ (Finding)</h3><div class='space-y-2 text-gray-700'><p><strong>- สินค้ามูลค่าสูงไม่ติดแถบ RFID:</strong> ตรวจพบว่าสินค้าที่จัดแสดงบนชั้นวาง ซึ่งมีมูลค่าสูงหลายรายการ ไม่ได้มีการติดตั้งแถบ RFID สำหรับแจ้งเตือนขโมยสินค้าออกนอกสาขา</p><p><strong>- เสาประตูกันขโมยไม่ทำงาน:</strong> ระบบเสาสัญญาณกันขโมยบริเวณประตูทางเข้า-ออกของสาขา อยู่ในสถานะไม่ทำงาน ไม่ส่งสัญญาณเตือนหากมีสินค้าถูกนำออกจากร้านโดยไม่ชำระเงิน</p></div></div>
+                <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-red-500 pb-2 mb-3 flex items-center'>2. การประเมินความเสี่ยง (Risk Analysis)</h3><div class='bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg'><p>ความเสี่ยงสินค้าสูญหายจากการถูกลักขโมย</p></div></div>
+                <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-yellow-500 pb-2 mb-3 flex items-center'>3. ข้อมูลเพิ่มเติมจากสาขา</h3><p class='text-gray-700'>ผู้ปฏิบัติงานที่สาขาแจ้งว่า สาขาจะมีการปรับ Planogram ใหม่ในเร็วๆ นี้ ซึ่งจะมีการแก้ไขและปรับปรุงในหลายส่วน รวมถึงการซ่อมแซมเสาประตูให้กลับมาใช้งานได้ตามปกติ</p></div>
+                <div><h3 class='text-lg font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-3 flex items-center'>4. ข้อเสนอแนะ (Recommendation)</h3><div class='space-y-4'><div class='border-l-4 border-green-500 pl-4'><p class='font-semibold'>ผู้รับผิดชอบหลัก: ผู้ดูแลชาแนล (@พี่โก้ <a href='mailto:pairoj@spvi.co.th' class='text-blue-600 hover:underline'>pairoj@spvi.co.th</a>) และ ผู้จัดการสาขา</p></div><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong class='font-semibold'>การติดตามแก้ไข:</strong> ให้ผู้ดูแลชาแนล (พี่โก้) ติดตามการซ่อมแซมเสาประตูกันขโมยในรอบการปรับ Planogram ใหม่นี้ และแจ้งกำหนดการแล้วเสร็จให้ทราบ</li><li><strong class='font-semibold'>การเฝ้าระวัง:</strong> ให้สาขาเฝ้าระวังพื้นที่หน้าร้านในส่วนที่มีความเสี่ยงหยิบขโมบได้ง่ายหรือลับตาคน</li><li><strong class='font-semibold'>การตรวจสอบซ้ำ:</strong> ทีมผู้ตรวจสอบจะทำการติดตามและตรวจสอบการแก้ไขในประเด็นนี้อีกครั้งในรอบการตรวจสอบถัดไป</li></ol></div></div>
+            </div>
+        </section>
+
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const ctx = document.getElementById('pettyCashChart').getContext('2d');
-            const pettyCashLimit = 3000;
-            const chartData = { labels: ['เดือน 2/68', 'เดือน 3/68', 'เดือน 5/68', 'เดือน 6/68'], datasets: [{ label: 'ยอดใช้เงินสดย่อยสุทธิ (บาท)', data: [7433, 4956, 5734, 5195], backgroundColor: (c) => c.dataset.data[c.dataIndex] > pettyCashLimit ? 'rgba(239, 68, 68, 0.7)' : 'rgba(59, 130, 246, 0.7)', borderColor: (c) => c.dataset.data[c.dataIndex] > pettyCashLimit ? 'rgba(239, 68, 68, 1)' : 'rgba(59, 130, 246, 1)', borderWidth: 1, borderRadius: 5, barPercentage: 0.6 }] };
-            const config = { type: 'bar', data: chartData, options: { responsive: true, maintainAspectRatio: false, plugins: { annotation: { annotations: { line1: { type: 'line', yMin: pettyCashLimit, yMax: pettyCashLimit, borderColor: 'rgb(255, 99, 132)', borderWidth: 2, borderDash: [6, 6], label: { content: `วงเงิน \${pettyCashLimit} บาท`, display: true, position: 'end', backgroundColor: 'rgba(255, 99, 132, 0.8)', font: { family: 'Kanit, sans-serif' } } } } }, legend: { display: false }, tooltip: { callbacks: { label: (c) => { let l = c.dataset.label || ''; if(l) l+=': '; if(c.parsed.y !== null) l+= new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(c.parsed.y); return l; } }, bodyFont: { family: 'Kanit, sans-serif' }, titleFont: { family: 'Kanit, sans-serif' } } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'จำนวนเงิน (บาท)', font: { size: 14, family: 'Kanit, sans-serif' } } }, x: { title: { display: true, text: 'เดือน (ปี 2568)', font: { size: 14, family: 'Kanit, sans-serif' } } } } } };
-            new Chart(ctx, config);
+
+            /**
+             * Initializes the main Dashboard / Audit Follow-up section.
+             */
+            function initializeDashboard() {
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_RVfHZwvnYgvhWleuLERcugjhnfxCe43SDrp1re0aasaAT7QA2CNrEHPnzFEvCeSlXA/exec";
+                const dashboardContent = document.getElementById('dashboard-content');
+                if (!dashboardContent) return;
+
+                const callbackName = 'jsonpCallbackDashboard' + Date.now();
+                window[callbackName] = (data) => {
+                    document.body.removeChild(script);
+                    delete window[callbackName];
+                    if (data.error) {
+                        dashboardContent.innerHTML = `<div class='text-center text-red-500 p-8'>เกิดข้อผิดพลาดในการโหลดข้อมูล: ${data.error}</div>`;
+                        return;
+                    }
+                    renderDashboard(data.findings);
+                };
+
+                const script = document.createElement('script');
+                script.src = `${SCRIPT_URL}?callback=${callbackName}`;
+                script.onerror = () => {
+                    dashboardContent.innerHTML = `<div class='text-center text-red-500 p-8'>ไม่สามารถโหลดข้อมูลแดชบอร์ดได้</div>`;
+                    delete window[callbackName];
+                };
+                document.body.appendChild(script);
+
+                function renderDashboard(findingsData) {
+                    // Inject the full dashboard HTML structure
+                    dashboardContent.innerHTML = `
+                        <div class='flex flex-col sm:flex-row justify-between sm:items-center mb-8 border-b pb-4 gap-4'>
+                            <div>
+                                <h1 class='text-2xl md:text-3xl font-bold text-gray-800'>สรุปผลการตรวจสอบ (Audit Follow-up)</h1>
+                                <p class='text-gray-500 mt-1'>สาขา: iStudio Central Rama 9 (S-CR) | รอบการตรวจสอบ: 17-18 มิถุนายน 2568</p>
+                            </div>
+                        </div>
+                        <div class='mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg'>
+                            <h2 class='text-xl font-bold text-blue-800 mb-2'>บทสรุปสำหรับผู้บริหาร</h2>
+                            <p class='text-gray-700'>ภาพรวมการปฏิบัติงานของสาขาอยู่ในเกณฑ์ดี โดยมีการพัฒนาที่เห็นได้ชัดในด้านการจัดระเบียบสต็อกสินค้า อย่างไรก็ตาม ยังมีข้อตรวจพบสำคัญในด้านการบริหารเงินสด, การควบคุมสต็อก, และความปลอดภัยที่ต้องได้รับการแก้ไขโดยเร่งด่วนเพื่อลดความเสี่ยงในการดำเนินงาน</p>
+                        </div>
+                        <div id='dashboard-metrics' class='grid grid-cols-2 md:grid-cols-4 gap-4 mb-6'>
+                            <div class='bg-gray-100 p-4 rounded-lg text-center'><h4 class='font-bold text-gray-600'>ข้อตรวจพบทั้งหมด</h4><p id='total-findings' class='text-3xl font-bold text-gray-800'>0</p></div>
+                            <div class='bg-red-50 p-4 rounded-lg text-center'><h4 class='font-bold text-red-600'>คงค้าง</h4><p id='pending-findings' class='text-3xl font-bold text-red-800'>0</p></div>
+                            <div class='bg-green-50 p-4 rounded-lg text-center'><h4 class='font-bold text-green-600'>ดำเนินการแล้ว</h4><p id='completed-findings' class='text-3xl font-bold text-green-800'>0</p></div>
+                            <div class='bg-indigo-50 p-4 rounded-lg text-center'><h4 class='font-bold text-indigo-600'>เกินกำหนด</h4><p id='overdue-findings' class='text-3xl font-bold text-indigo-800'>0</p></div>
+                        </div>
+                        <div class='mb-8'>
+                            <div class='flex justify-between mb-1'><span class='text-base font-medium text-blue-700'>ความคืบหน้าการแก้ไข</span><span id='progress-percentage' class='text-sm font-medium text-blue-700'>0%</span></div>
+                            <div class='w-full bg-gray-200 rounded-full h-2.5'><div id='progress-bar' class='bg-blue-600 h-2.5 rounded-full' style='width: 0%'></div></div>
+                        </div>
+                        <div>
+                            <h2 class='text-xl font-semibold text-gray-700 mb-4'>ตารางสรุปข้อตรวจพบที่ต้องดำเนินการ</h2>
+                            <div class='overflow-x-auto rounded-lg border'>
+                                <table class='w-full text-left text-sm whitespace-nowrap'><thead class='bg-gray-100 border-b'><tr><th class='px-4 py-3 font-semibold text-gray-600'>ลำดับ</th><th class='px-4 py-3 font-semibold text-gray-600'>รายละเอียดข้อตรวจพบ</th><th class='px-4 py-3 font-semibold text-gray-600'>ผู้รับผิดชอบ</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>กำหนดแล้วเสร็จ</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>สถานะ</th></tr></thead><tbody id='findings-table-body'>
+                                </tbody></table>
+                            </div>
+                        </div>`;
+                    
+                    // Now populate the data
+                    const tableBody = document.getElementById('findings-table-body');
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (!tableBody || !Array.isArray(findingsData)) return;
+
+                    tableBody.innerHTML = '';
+                    findingsData.forEach(item => {
+                        const dueDate = new Date(item.dueDate);
+                        const isOverdue = dueDate < today && item.status === 'คงค้าง';
+                        const row = document.createElement('tr');
+                        let rowClass = 'bg-white hover:bg-gray-50';
+                        if (item.status === 'ดำเนินการแล้ว') {
+                            rowClass = 'bg-green-50 hover:bg-green-100 text-gray-500 line-through';
+                        }
+                        row.className = `border-b ${rowClass} transition-colors duration-300`;
+                        row.innerHTML = `
+                            <td class="px-4 py-3 text-center">${item.id}</td>
+                            <td class="px-4 py-3 font-medium">${item.finding}</td>
+                            <td class="px-4 py-3">${item.responsible}</td>
+                            <td class="px-4 py-3 text-center">
+                                <input type="date" class="date-input w-full p-1 border border-transparent rounded-md text-sm text-center bg-transparent hover:bg-gray-100 focus:bg-white focus:border-blue-500 ${isOverdue ? 'text-indigo-800 font-bold' : ''}" value="${item.dueDate}" data-id="${item.id}">
+                            </td>
+                            <td class="px-4 py-3 text-center">
+                                <select class="status-select w-full p-1.5 border border-gray-300 rounded-md text-xs focus:ring-blue-500 focus:border-blue-500 bg-white" data-id="${item.id}">
+                                    <option value="คงค้าง" ${item.status === 'คงค้าง' ? 'selected' : ''}>คงค้าง</option>
+                                    <option value="ดำเนินการแล้ว" ${item.status === 'ดำเนินการแล้ว' ? 'selected' : ''}>ดำเนินการแล้ว</option>
+                                </select>
+                            </td>`;
+                        tableBody.appendChild(row);
+                    });
+
+                    updateDashboardMetrics(findingsData);
+                }
+
+                function updateDashboardMetrics(findingsData) {
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    const total = findingsData.length;
+                    const completed = findingsData.filter(f => f.status === 'ดำเนินการแล้ว').length;
+                    const pending = total - completed;
+                    const overdue = findingsData.filter(f => new Date(f.dueDate) < today && f.status === 'คงค้าง').length;
+                    const progress = total > 0 ? (completed / total) * 100 : 0;
+
+                    document.getElementById('total-findings').textContent = total;
+                    document.getElementById('pending-findings').textContent = pending;
+                    document.getElementById('completed-findings').textContent = completed;
+                    document.getElementById('overdue-findings').textContent = overdue;
+                    document.getElementById('progress-percentage').textContent = `${progress.toFixed(0)}%`;
+                    document.getElementById('progress-bar').style.width = `${progress}%`;
+                }
+            }
+
+
+            /**
+             * Initializes the Petty Cash Chart.
+             */
+            function initializePettyCashChart() {
+                const ctx = document.getElementById('pettyCashChart')?.getContext('2d');
+                if (!ctx) return; 
+
+                const pettyCashLimit = 3000;
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['เดือน 2/68', 'เดือน 3/68', 'เดือน 5/68', 'เดือน 6/68'],
+                        datasets: [{
+                            label: 'ยอดใช้เงินสดย่อยสุทธิ (บาท)',
+                            data: [7433, 4956, 5734, 5195],
+                            backgroundColor: (c) => c.dataset.data[c.dataIndex] > pettyCashLimit ? 'rgba(239, 68, 68, 0.7)' : 'rgba(59, 130, 246, 0.7)',
+                            borderColor: (c) => c.dataset.data[c.dataIndex] > pettyCashLimit ? 'rgba(239, 68, 68, 1)' : 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            barPercentage: 0.6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            annotation: {
+                                annotations: {
+                                    limitLine: {
+                                        type: 'line',
+                                        yMin: pettyCashLimit,
+                                        yMax: pettyCashLimit,
+                                        borderColor: 'rgb(255, 99, 132)',
+                                        borderWidth: 2,
+                                        borderDash: [6, 6],
+                                        label: {
+                                            content: `วงเงิน ${pettyCashLimit} บาท`,
+                                            display: true,
+                                            position: 'end',
+                                            backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                                            font: { family: 'Kanit, sans-serif' }
+                                        }
+                                    }
+                                }
+                            },
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: (c) => {
+                                        let l = c.dataset.label || '';
+                                        if (l) l += ': ';
+                                        if (c.parsed.y !== null) l += new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(c.parsed.y);
+                                        return l;
+                                    }
+                                },
+                                bodyFont: { family: 'Kanit, sans-serif' },
+                                titleFont: { family: 'Kanit, sans-serif' }
+                            }
+                        },
+                        scales: {
+                            y: { beginAtZero: true, title: { display: true, text: 'จำนวนเงิน (บาท)', font: { size: 14, family: 'Kanit, sans-serif' } } },
+                            x: { title: { display: true, text: 'เดือน (ปี 2568)', font: { size: 14, family: 'Kanit, sans-serif' } } }
+                        }
+                    }
+                });
+            }
+
+            /**
+             * Initializes the Stock Discrepancy Chart and Table.
+             */
+            function initializeStockDiscrepancy() {
+                const stockDiscrepancyContent = document.getElementById('stock-discrepancy-content');
+                if (!stockDiscrepancyContent) return;
+                
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDrOnZCQGjTpA5FZBLAZFv8d7Kj4lAkrLy5gV5VYkiGdrm0W5k5QxpbD3pPY1rxMcYbw/exec";
+                const callbackName = 'jsonpCallbackStock' + Date.now();
+                
+                window[callbackName] = (data) => {
+                    document.body.removeChild(script);
+                    delete window[callbackName];
+                    if (data.error) {
+                        stockDiscrepancyContent.innerHTML = `<div class='text-center text-red-500 p-8'>เกิดข้อผิดพลาดในการโหลดข้อมูล: ${data.error}</div>`;
+                        return;
+                    }
+                    renderStockData(data.stockData);
+                };
+
+                const script = document.createElement('script');
+                script.src = `${SCRIPT_URL}?callback=${callbackName}&reportType=stockdiff`;
+                script.onerror = () => {
+                    stockDiscrepancyContent.innerHTML = `<div class='text-center text-red-500 p-8'>ไม่สามารถโหลดข้อมูลผลต่างสต็อกได้</div>`;
+                    delete window[callbackName];
+                };
+                document.body.appendChild(script);
+
+                function renderStockData(stockData) {
+                    const chartContainer = document.getElementById('stock-chart-container');
+                    const tableBody = document.getElementById('stock-table-body');
+                    if (!chartContainer || !tableBody) return;
+                    
+                    stockDiscrepancyContent.querySelector('.loader-container')?.remove();
+
+                    if (!stockData || stockData.length === 0) {
+                        chartContainer.innerHTML = "<div class='text-center text-gray-500 p-8'>ไม่มีข้อมูลผลต่างสต็อกสินค้า</div>";
+                        return;
+                    }
+
+                    const ctx = document.getElementById('stockDiffChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: stockData.map(i => i.desc),
+                            datasets: [
+                                { label: 'จำนวนในระบบ (QTY)', data: stockData.map(i => i.qty), backgroundColor: 'rgba(59, 130, 246, 0.7)', borderRadius: 4 },
+                                { label: 'จำนวนที่ตรวจนับ (SCAN)', data: stockData.map(i => i.scan), backgroundColor: 'rgba(239, 68, 68, 0.7)', borderRadius: 4 }
+                            ]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { position: 'top', labels: { font: { family: 'Kanit, sans-serif' } } },
+                                tooltip: { bodyFont: { family: 'Kanit, sans-serif' }, titleFont: { family: 'Kanit, sans-serif' } },
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'end',
+                                    color: '#374151',
+                                    font: { family: 'Kanit, sans-serif', weight: 'bold', size: 10 },
+                                    offset: 4,
+                                    formatter: (v) => v > 0 ? v : ''
+                                }
+                            },
+                            scales: {
+                                x: { beginAtZero: true, title: { display: true, text: 'จำนวน (ชิ้น)', font: { size: 14, family: 'Kanit, sans-serif' } }, ticks: { stepSize: 1 } },
+                                y: { ticks: { font: { size: 10, family: 'Kanit, sans-serif' } } }
+                            }
+                        }
+                    });
+
+                    // Populate table with correct styling logic
+                    tableBody.innerHTML = ''; 
+                    stockData.forEach((item, index) => {
+                        const initialDiff = item.diff;
+                        const currentDiff = initialDiff + (item.foundQty || 0);
+                        
+                        let rowClass = 'bg-white hover:bg-gray-50';
+                        let textClass = 'text-gray-800';
+                        
+                        if (currentDiff === 0 && item.status === 'found') {
+                            rowClass = 'bg-green-100 hover:bg-green-200';
+                            textClass = 'text-gray-500 line-through';
+                        } else if (item.status === 'missing_confirmed') {
+                            rowClass = 'bg-red-100 hover:bg-red-200';
+                            textClass = 'text-gray-800';
+                        } else if(item.status === 'found'){
+                            rowClass = 'bg-green-50 hover:bg-green-100';
+                        }
+
+                        const row = document.createElement('tr');
+                        row.className = `border-b ${rowClass} align-middle transition-colors duration-300`;
+                        
+                        row.innerHTML = `
+                            <td class='px-4 py-3 text-center ${textClass}'>${index + 1}</td>
+                            <td class='px-4 py-3 font-medium ${textClass}'>${item.desc}<p class='text-xs ${textClass}'>${item.sku}</p></td>
+                            <td class='px-4 py-3 text-center ${textClass}'>${item.qty}</td>
+                            <td class='px-4 py-3 text-center ${textClass}'>${item.scan}</td>
+                            <td class='px-4 py-3 text-center font-bold ${currentDiff === 0 ? 'text-green-600' : 'text-red-600'} ${currentDiff === 0 ? 'line-through' : ''}'>${currentDiff}</td>
+                            <td class='px-4 py-3 text-center'><input type="number" class="w-20 p-1 border border-gray-300 rounded-md text-sm text-center" value="${item.foundQty || 0}" data-sku="${item.sku}" min="0" max="${Math.abs(initialDiff)}"></td>
+                            <td class='px-4 py-3 text-center'><select class="status-select w-full p-1.5 border border-gray-300 rounded-md text-xs focus:ring-blue-500 focus:border-blue-500 bg-white" data-sku="${item.sku}"><option value="pending" ${item.status === 'pending' ? 'selected' : ''}>อยู่ระหว่างติดตาม</option><option value="found" ${item.status === 'found' ? 'selected' : ''}>พบสินค้าแล้ว</option><option value="missing_confirmed" ${item.status === 'missing_confirmed' ? 'selected' : ''}>ยืนยันขาดหาย</option></select></td>`;
+                        tableBody.appendChild(row);
+                    });
+                }
+            }
+
+
+            /**
+             * Initializes the Pending Purchase Order Table.
+             */
+            function initializePendingPOTable() {
+                const poTableBody = document.getElementById('po-table-body');
+                if (!poTableBody) return;
+
+                const auditDate = new Date('2025-06-18');
+                const poData = [ 
+                    { no: 1, poNo: 'PO1220818109-1', date: '2022-08-18', type: 'PO Apple Care', desc: 'SEJID2ZX/A AppleCare for iPad Air', status: 'รอดำเนินการ' },
+                    { no: 2, poNo: 'PO1220818275', date: '2022-08-18', type: 'PO Apple Care', desc: 'SCPG2ZX/A AppleCare+ for 14-inch MacBook Pro', status: 'รอดำเนินการ' },
+                    { no: 3, poNo: 'PO1221214083', date: '2022-12-14', type: 'PO', desc: 'MNEJ3TH/A APPLE MBP 13.3 SPACE GRAY', status: 'เคลียร์แล้ว' },
+                    { no: 4, poNo: 'PO1230516187', date: '2023-05-16', type: 'PO', desc: 'APPLE Z124000BY MBA 13.3 SPACE GREY', status: 'เคลียร์แล้ว' },
+                    { no: 5, poNo: 'POI230629082', date: '2023-06-29', type: 'PO', desc: 'MM9L3TH/A IPAD AIR 5 (10.9) WI-FI 256GB', status: 'เคลียร์แล้ว' },
+                    { no: 6, poNo: 'POI230629082', date: '2023-06-29', type: 'PO', desc: 'MM9M3TH/A IPAD AIR 5 (10.9) WI-FI 256GB PINK', status: 'เคลียร์แล้ว' },
+                    { no: 7, poNo: 'PO1230629082', date: '2023-06-29', type: 'PO', desc: 'MM723TH/A IPAD AIR 5 WI-FI + CELLULAR', status: 'เคลียร์แล้ว' },
+                    { no: 8, poNo: 'POI230706007', date: '2023-07-06', type: 'PO', desc: 'APPLE Z18P0010P MBA 15 SILVER', status: 'เคลียร์แล้ว' },
+                    { no: 9, poNo: 'POI230706007', date: '2023-07-06', type: 'PO', desc: 'Z18T001A0 MBA 15 MIDNIGHT', status: 'เคลียร์แล้ว' },
+                    { no: 10, poNo: 'PO1230706007', date: '2023-07-06', type: 'PO', desc: 'Z18R0011C MBA 15 STARLIGHT', status: 'เคลียร์แล้ว' },
+                    { no: 11, poNo: 'PO1240215206', date: '2024-02-15', type: 'PO', desc: 'MM743TH/A IPAD AIR 5 WI-FI + CELLULAR', status: 'เคลียร์แล้ว' },
+                    { no: 12, poNo: 'PO1250523236', date: '2025-05-23', type: 'PO', desc: 'MC9W4TH/A IPAD AIR 11" (M3) WI-FI 128GB', status: 'เคลียร์แล้ว' },
+                    { no: 13, poNo: 'POI250523236', date: '2025-05-23', type: 'PO', desc: 'MYJG3TH/A STUDIO DISPLAY-STANDARD GLASS', status: 'เคลียร์แล้ว' }
+                ];
+
+                poTableBody.innerHTML = '';
+                poData.forEach(item => {
+                    const poDate = new Date(item.date);
+                    const diffTime = Math.abs(auditDate - poDate);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    const isPending = item.status === 'รอดำเนินการ';
+                    const statusBadge = isPending ?
+                        `<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800'><ion-icon name='time-outline' class='mr-1'></ion-icon> ${item.status}</span>` :
+                        `<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800'><ion-icon name='checkmark-circle-outline' class='mr-1'></ion-icon> ${item.status}</span>`;
+                    const row = document.createElement('tr');
+                    row.className = `border-b ${isPending ? 'bg-red-50 hover:bg-red-100' : 'bg-white hover:bg-gray-50'}`;
+                    row.innerHTML = `
+                        <td class='px-4 py-3 text-center'>${item.no}</td>
+                        <td class='px-4 py-3 font-mono text-gray-700'>${item.poNo}</td>
+                        <td class='px-4 py-3 text-gray-700'>${item.date}</td>
+                        <td class='px-4 py-3 text-center ${isPending ? 'font-bold text-red-600' : 'text-gray-700'}'>${diffDays.toLocaleString()}</td>
+                        <td class='px-4 py-3 text-gray-700'>${item.type}</td>
+                        <td class='px-4 py-3 text-gray-800'>${item.desc}</td>
+                        <td class='px-4 py-3 text-center'>${statusBadge}</td>`;
+                    poTableBody.appendChild(row);
+                });
+            }
+
+            // Execute all initialization functions
+            initializeDashboard();
+            initializePettyCashChart();
+            initializeStockDiscrepancy();
+            initializePendingPOTable();
         });
     </script>
-</body>
-</html>
-            "></iframe>
-        </div>
-
-        <!-- Iframe for Stock Discrepancy -->
-        <div class="iframe-container">
-            <div class="iframe-header">2. รายงานผลต่างสต๊อกสินค้า</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>2. รายงานผลต่างสต๊อกสินค้า</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0'></script>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap' rel='stylesheet'>
-    <style>body { font-family: 'Kanit', sans-serif; }</style>
-</head>
-<body class='bg-gray-100'>
-    <div class='flex items-center justify-center min-h-screen p-2 sm:p-4'>
-        <div class='w-full max-w-7xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-gray-200'>
-            <div id='main-content'>
-                <div class='flex flex-col sm:flex-row justify-between sm:items-center mb-8 border-b pb-4 gap-4'>
-                    <div>
-                        <h1 class='text-2xl md:text-3xl font-bold text-gray-800'>2. รายงานผลต่างสต๊อกสินค้า</h1>
-                        <p class='text-gray-500 mt-1'>สาขา: B018 iStudio Central Rama 9 (S-CR) | วันที่ตรวจสอบ: 17-18 มิถุนายน 2568</p>
-                    </div>
-                </div>
-                <div class='bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-lg mb-8' role='alert'><p class='font-bold'>สรุปผลการตรวจสอบ</p><p>พบสินค้าขาดหายจากการตรวจสอบจำนวน <strong class='font-semibold'>15</strong> รายการ มีมูลค่ารวม <strong class='font-semibold'>-21,239.00</strong> บาท</p></div>
-                <div class='mb-12'>
-                    <h2 class='text-xl font-semibold text-gray-700 mb-4 text-center'>แผนภูมิเปรียบเทียบจำนวนสินค้าในระบบและจำนวนที่ตรวจนับได้</h2>
-                    <div class='relative h-[500px] md:h-[600px]'><canvas id='stockDiffChart'></canvas></div>
-                </div>
-                <div>
-                    <h2 class='text-xl font-semibold text-gray-700 mb-4'>ตารางสรุปรายละเอียดผลต่างสต๊อกสินค้า</h2>
-                    <div class='overflow-x-auto rounded-lg border'><table class='w-full text-left text-sm'><thead class='bg-gray-100 border-b'><tr><th class='px-4 py-3 font-semibold text-gray-600'>ลำดับ</th><th class='px-4 py-3 font-semibold text-gray-600'>รายละเอียดสินค้า</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>ระบบ</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>ตรวจนับ</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>ผลต่าง</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>จำนวนที่พบ</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>สถานะ</th></tr></thead><tbody id='stock-table-body'></tbody></table></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const stockData = [{'sku':'MQDY3TH/A','desc':'APPLE IPHONE 14 PLUS 128GB BLUE','qty':2,'scan':0,'diff':-2,'foundQty':0,'status':'pending'},{'sku':'MQE23TH/A','desc':'APPLE IPHONE 14 PLUS 256GB STARLIGHT','qty':1,'scan':0,'diff':-1,'foundQty':0,'status':'pending'}];
-            const ctx = document.getElementById('stockDiffChart').getContext('2d');
-            Chart.register(ChartDataLabels);
-            new Chart(ctx, { type: 'bar', data: { labels: stockData.map(i => i.desc), datasets: [{ label: 'จำนวนในระบบ (QTY)', data: stockData.map(i => i.qty), backgroundColor: 'rgba(59, 130, 246, 0.7)', borderRadius: 4 }, { label: 'จำนวนที่ตรวจนับ (SCAN)', data: stockData.map(i => i.scan), backgroundColor: 'rgba(239, 68, 68, 0.7)', borderRadius: 4 }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { font: { family: 'Kanit, sans-serif' } } }, tooltip: { bodyFont: { family: 'Kanit, sans-serif' }, titleFont: { family: 'Kanit, sans-serif' } }, datalabels: { anchor: 'end', align: 'end', color: '#374151', font: { family: 'Kanit, sans-serif', weight: 'bold', size: 10 }, offset: 4, formatter: (v) => v > 0 ? v : '' } }, scales: { x: { beginAtZero: true, title: { display: true, text: 'จำนวน (ชิ้น)', font: { size: 14, family: 'Kanit, sans-serif' } }, ticks: { stepSize: 1 } }, y: { ticks: { font: { size: 10, family: 'Kanit, sans-serif' } } } } } });
-            const tableBody = document.getElementById('stock-table-body');
-            stockData.forEach((item, index) => { const row = document.createElement('tr'); row.className = 'border-b bg-white hover:bg-gray-50'; row.innerHTML = `<td class='px-4 py-3 text-center'>\${index + 1}</td><td class='px-4 py-3 font-medium'>\${item.desc}</td><td class='px-4 py-3 text-center'>\${item.qty}</td><td class='px-4 py-3 text-center'>\${item.scan}</td><td class='px-4 py-3 text-center font-bold text-red-600'>\${item.diff}</td><td>...</td><td>...</td>`; tableBody.appendChild(row); });
-        });
-    </script>
-</body>
-</html>
-            "></iframe>
-        </div>
-
-        <!-- Iframe for Pending Transfer -->
-        <div class="iframe-container">
-            <div class="iframe-header">3. รายงานการโอนสินค้าออกค้างรับในระบบ</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>บันทึกข้อตรวจพบ - รายการโอนออกค้างรับ</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap' rel='stylesheet'>
-    <style>body { font-family: 'Kanit', sans-serif; background-color: #f7fafc; } th, td { padding: 12px 16px; }</style>
-</head>
-<body class='bg-gray-50 p-4 md:p-8'>
-    <div class='max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200'>
-        <div class='text-center mb-6 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>3. รายงานการโอนสินค้าออกค้างรับในระบบ (Pending Receive)</h1></div>
-        <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-3'>1. รายละเอียดของรายการ (Transaction Details)</h3><div class='overflow-x-auto rounded-lg border'><table class='w-full text-left text-sm'><tbody><tr class='border-b'><th class='w-1/3 bg-gray-50 font-medium text-gray-600'>เลขที่เอกสารโอน</th><td class='text-gray-800'><code>STB018250322003</code></td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>วันที่และเวลาโอน</th><td class='text-gray-800'>22 มีนาคม 2568, 20:54 น.</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>SKU</th><td class='text-gray-800'><code>MTL23FE/A</code></td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>รายละเอียดสินค้า</th><td class='text-gray-800'>APPLE MTL23FE/A 41MM GAME ROYAL/ORANGE NIKE SPORT LOOP</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>จำนวน</th><td class='text-gray-800'>1 ชิ้น</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>Serial No.</th><td class='text-gray-800'><code>240800665</code></td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>ผู้ดำเนินการ</th><td class='text-gray-800'>สมาพร บุญโฉม (000110)</td></tr><tr class='border-b'><th class='bg-gray-50 font-medium text-gray-600'>สถานะปัจจุบัน</th><td class='text-red-600 font-bold'>Pending Receive</td></tr><tr><th class='bg-gray-50 font-medium text-gray-600 align-top'>หมายเหตุจากสาขา</th><td class='text-gray-800'>สินค้าสมนาคุณให้ลูกค้าที่ร้องเรียนเรื่องซื้อ iPad ไปแล้วเห็นประกาศว่าลดราคา 7,000 บาท (คุณหมู)</td></tr></tbody></table></div></div>
-        <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-3'>2. สาเหตุและผลกระทบ (Root Cause & Impact)</h3><p class='text-gray-700 mb-2'><strong class='font-semibold text-gray-600'>สาเหตุ:</strong> สาขาได้นำสินค้าไปมอบให้ลูกค้าเป็นกรณีพิเศษเพื่อส่งเสริมการขาย แต่ไม่ได้ดำเนินการผ่านกระบวนการขออนุมัติตัดสต๊อกสินค้าที่ถูกต้อง ทำให้รายการยังคงค้างอยู่ในระบบการโอนย้าย</p><p class='text-gray-700 mb-2'><strong class='font-semibold text-gray-600'>ผลกระทบ:</strong></p><ul class='list-disc list-inside text-gray-700 space-y-1'><li>รายการถูกทิ้งค้างรับในระบบ และไม่ถูกตัดออกเป็นส่วนของค่าใช้จ่ายตามความเป็นจริง</li></ul></div>
-        <div><h3 class='text-lg font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-3'>3. ข้อเสนอแนะ (Recommendation)</h3><p class='text-gray-700 mb-3'>เพื่อให้การดำเนินงานถูกต้องและป้องกันปัญหาในอนาคต ผู้ตรวจสอบขอเสนอแนะให้ผู้จัดการสาขาและผู้ที่เกี่ยวข้องดำเนินการดังนี้:</p><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong>ดำเนินการแก้ไขให้ถูกต้อง:</strong> ให้สาขาดำเนินการตามกระบวนการ <strong>'ขอตัดสินค้าเพื่อส่งเสริมการขาย'</strong> สำหรับรายการดังกล่าวให้ถูกต้องและสมบูรณ์</li><li><strong>ปิดรายการที่ค้างในระบบ:</strong> ประสานงานกับฝ่ายที่เกี่ยวข้องเพื่อดำเนินการปิดสถานะของใบโอน <code>STB018250322003</code> ในระบบให้เรียบร้อย</li><li><strong>ทบทวนกระบวนการ:</strong> สื่อสารขั้นตอนการเบิก/ตัดสต๊อกสินค้าสำหรับกรณีส่งเสริมการขายหรือกรณีพิเศษอื่นๆ เพื่อให้มั่นใจว่าทุกรายการจะถูกบันทึกอย่างถูกต้องในอนาคต</li></ol></div>
-    </div>
-</body>
-</html>
-            "></iframe>
-        </div>
-
-        <!-- Iframe for Pending PO -->
-        <div class="iframe-container">
-            <div class="iframe-header">4. รายงาน PO ค้างรับนานผิดปกติ</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>เรื่อง: PO ค้างรับนานผิดปกติ</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap' rel='stylesheet'>
-    <script type='module' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js'></script>
-    <script nomodule src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
-    <style>body { font-family: 'Kanit', sans-serif; background-color: #f9fafb; }</style>
-</head>
-<body class='bg-gray-50 p-4 md:p-8'>
-    <div class='max-w-7xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200'>
-        <div class='mb-6 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>4. รายงาน PO รับเข้าจากการสั่งซื้อค้างนานผิดปกติ</h1><p class='text-gray-500 mt-1'>สาขา: B018 iStudio Central Rama 9 | ณ วันที่: 18 มิถุนายน 2568</p></div>
-        <div class='grid grid-cols-1 md:grid-cols-3 gap-4 mb-8'><div class='bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg'><h4 class='font-bold text-blue-800'>PO ค้างรับทั้งหมด</h4><p class='text-3xl font-bold text-blue-600'>13 <span class='text-lg font-normal'>รายการ</span></p></div><div class='bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg'><h4 class='font-bold text-yellow-800'>เคลียร์แล้ว</h4><p class='text-3xl font-bold text-yellow-600'>11 <span class='text-lg font-normal'>รายการ</span></p></div><div class='bg-red-50 border-l-4 border-red-500 p-4 rounded-lg'><h4 class='font-bold text-red-800'>คงค้างรอดำเนินการ</h4><p class='text-3xl font-bold text-red-600'>2 <span class='text-lg font-normal'>รายการ</span></p></div></div>
-        <div><h2 class='text-xl font-semibold text-gray-700 mb-4'>รายละเอียดใบสั่งซื้อ (PO) ที่ค้างรับในระบบ</h2><div class='overflow-x-auto rounded-lg border'><table class='w-full text-left text-sm whitespace-nowrap'><thead class='bg-gray-100 border-b'><tr><th class='px-4 py-3 font-semibold text-gray-600'>ลำดับ</th><th class='px-4 py-3 font-semibold text-gray-600'>เลขที่ PO</th><th class='px-4 py-3 font-semibold text-gray-600'>วันที่สร้าง</th><th class='px-4 py-3 font-semibold text-gray-600'>อายุ (วัน)</th><th class='px-4 py-3 font-semibold text-gray-600'>ประเภท</th><th class='px-4 py-3 font-semibold text-gray-600'>รายละเอียด</th><th class='px-4 py-3 font-semibold text-gray-600 text-center'>สถานะ</th></tr></thead><tbody id='po-table-body'></tbody></table></div></div>
-        <div class='mt-8'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-3'>5. ข้อเสนอแนะ (Recommendation)</h3><p class='text-gray-700 mb-3'>เพื่อให้สถานะ PO ในระบบตรงตามความเป็นจริง และลดการสับสนสำหรับการทำงานในอนาคต ผู้ตรวจสอบขอเสนอแนะดังนี้:</p><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong>Apple Care:</strong> ให้ผู้ที่รับผิดชอบดำเนินการตรวจสอบและปิดรายการ PO Apple Care ทั้ง 2 รายการที่ยังคงค้างอยู่ เนื่องจากเป็นรายการที่ค้างนานมากแล้ว</li><li><strong>กำหนดรอบการตรวจสอบ:</strong> ตั้งรอบการตรวจสอบ PO ค้างรับในระบบเป็นประจำ (เช่น ทุกสิ้นเดือน) เพื่อป้องกันการเกิดรายการสะสมค้างนานในอนาคต และเคลียร์รายการที่ไม่จำเป็นออกจากระบบ</li></ol></div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const auditDate = new Date('2025-06-18');
-            const poData = [{ no: 1, poNo: 'PO1220818109-1', date: '2022-08-18', type: 'PO Apple Care', desc: 'SEJID2ZX/A AppleCare for iPad Air', status: 'รอดำเนินการ' }, { no: 2, poNo: 'PO1220818275', date: '2022-08-18', type: 'PO Apple Care', desc: 'SCPG2ZX/A AppleCare+ for 14-inch MacBook Pro', status: 'รอดำเนินการ' }];
-            const tableBody = document.getElementById('po-table-body');
-            poData.forEach(item => {
-                const poDate = new Date(item.date);
-                const diffTime = Math.abs(auditDate - poDate);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                const isPending = item.status === 'รอดำเนินการ';
-                const statusBadge = isPending ? `<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800'><ion-icon name='time-outline' class='mr-1'></ion-icon> \${item.status}</span>` : `<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800'><ion-icon name='checkmark-circle-outline' class='mr-1'></ion-icon> \${item.status}</span>`;
-                const row = document.createElement('tr');
-                row.className = `border-b \${isPending ? 'bg-red-50 hover:bg-red-100' : 'bg-white hover:bg-gray-50'}`;
-                row.innerHTML = `<td class='px-4 py-3 text-center'>\${item.no}</td><td class='px-4 py-3 font-mono text-gray-700'>\${item.poNo}</td><td class='px-4 py-3 text-gray-700'>\${item.date}</td><td class='px-4 py-3 text-center \${isPending ? 'font-bold text-red-600' : 'text-gray-700'}'>\${diffDays.toLocaleString()}</td><td class='px-4 py-3 text-gray-700'>\${item.type}</td><td class='px-4 py-3 text-gray-800'>\${item.desc}</td><td class='px-4 py-3 text-center'>\${statusBadge}</td>`;
-                tableBody.appendChild(row);
-            });
-        });
-    </script>
-</body>
-</html>
-            "></iframe>
-        </div>
-
-        <!-- Iframe for On-Hand/Serial Discrepancy -->
-        <div class="iframe-container">
-            <div class="iframe-header">5. รายงานจำนวน On-Hand และ Serial On-Hand ไม่สอดคล้องกัน</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>รายงานข้อตรวจพบ: ผลต่างจำนวน On-Hand และ Serial On-Hand</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap' rel='stylesheet'>
-    <script type='module' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js'></script>
-    <script nomodule src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
-    <style>body { font-family: 'Kanit', sans-serif; background-color: #f9fafb; }</style>
-</head>
-<body class='bg-gray-50 p-4 md:p-8'>
-    <div class='max-w-5xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200'>
-        <div class='mb-8 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>5. รายงานจำนวนสินค้า (On-Hand) และ (Serial On-Hand) ไม่สอดคล้องกัน</h1><p class='text-sm text-gray-500 mt-2'>สาขา: B018 iStudio Central Rama 9 | ณ วันที่: 18 มิถุนายน 2568</p></div>
-        <div class='bg-orange-50 border-l-4 border-orange-500 text-orange-800 p-4 rounded-lg mb-8 flex items-center'><ion-icon name='alert-circle-outline' class='text-3xl mr-4'></ion-icon><div><p class='font-bold'>สรุปข้อตรวจพบ</p><p>พบสินค้าจำนวน <strong class='font-semibold'>3 รายการ</strong> ที่มีจำนวนในรายงาน On-Hand (OH) และรายงาน Serial On-Hand (SOH) ไม่ตรงกัน ซึ่งอาจส่งผลกระทบต่อความถูกต้องของสต๊อกสินค้า</p></div></div>
-        <div class='space-y-6'><h2 class='text-xl font-semibold text-gray-700 mb-4'>รายการสินค้าที่พบปัญหา</h2><div class='border rounded-lg p-4 bg-white shadow-sm'><div class='flex justify-between items-start'><div><p class='font-bold text-lg text-gray-800'>1. APPLE AIRPODS</p><p class='text-sm font-mono text-gray-500'>SKU: MXP63ZA/A</p></div><div class='text-right'><p class='font-bold text-2xl text-red-600'>-2</p><p class='text-xs text-gray-500'>ส่วนต่าง</p></div></div><div class='grid grid-cols-3 gap-2 text-center my-4'><div class='bg-blue-50 p-2 rounded'><p class='text-sm text-blue-800'>On-Hand</p><p class='font-bold text-xl text-blue-900'>31</p></div><div class='bg-red-50 p-2 rounded'><p class='text-sm text-red-800'>Serial On-Hand</p><p class='font-bold text-xl text-red-900'>29</p></div><div class='bg-gray-100 p-2 rounded'><p class='text-sm text-gray-800'>มูลค่าต่อหน่วย</p><p class='font-bold text-xl text-gray-900'>4,990</p></div></div><div class='text-sm'><p><strong class='font-semibold'>รายละเอียด/สาเหตุ:</strong> พบความผิดปกติจากบิล <strong>B018-P02-25052200025</strong> (ส่วนต่าง 1 ชิ้น) และอีก 1 ชิ้นอยู่ระหว่างการตรวจสอบหาสาเหตุ</p></div></div><div class='border rounded-lg p-4 bg-white shadow-sm'><div class='flex justify-between items-start'><div><p class='font-bold text-lg text-gray-800'>2. APPLE USB-C TO 3.5 MM ADAPTER</p><p class='text-sm font-mono text-gray-500'>SKU: MW2Q3ZA/A</p></div><div class='text-right'><p class='font-bold text-2xl text-red-600'>-1</p><p class='text-xs text-gray-500'>ส่วนต่าง</p></div></div><div class='grid grid-cols-3 gap-2 text-center my-4'><div class='bg-blue-50 p-2 rounded'><p class='text-sm text-blue-800'>On-Hand</p><p class='font-bold text-xl text-blue-900'>10</p></div><div class='bg-red-50 p-2 rounded'><p class='text-sm text-red-800'>Serial On-Hand</p><p class='font-bold text-xl text-red-900'>9</p></div><div class='bg-gray-100 p-2 rounded'><p class='text-sm text-gray-800'>มูลค่าต่อหน่วย</p><p class='font-bold text-xl text-gray-900'>390</p></div></div><div class='text-sm'><p><strong class='font-semibold'>รายละเอียด/สาเหตุ:</strong> พบความผิดปกติจากบิล <strong>B018-P02-25052200023</strong></p></div></div></div>
-        <div class='mt-10'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-3'>ข้อเสนอแนะ (Recommendation)</h3><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong>ตรวจสอบบิลที่เกี่ยวข้อง:</strong> ให้ผู้จัดการสาขาแจ้งพี่ม่อม @Arpaporn Khungaiwong <arpaporn@spvi.co.th> ดำเนินการตรวจสอบบิลขายทั้ง 3 บิล เพื่อหาสาเหตุ และปรับปรุงสต็อคให้ถูกต้อง</li></ol></div>
-    </div>
-</body>
-</html>
-            "></iframe>
-        </div>
-
-        <!-- Iframe for Security Report -->
-        <div class="iframe-container">
-            <div class="iframe-header">6. รายงานระบบป้องกันการโจรกรรมสินค้า</div>
-            <iframe srcdoc="
-<!DOCTYPE html>
-<html lang='th'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>บันทึกข้อตรวจพบ: ความปลอดภัยของสินค้าหน้าร้าน</title>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap' rel='stylesheet'>
-    <style>body { font-family: 'Kanit', sans-serif; background-color: #f9fafb; }</style>
-</head>
-<body class='bg-gray-50 p-4 md:p-8'>
-    <div class='max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200'>
-        <div class='mb-8 border-b pb-4'><h1 class='text-2xl md:text-3xl font-bold text-gray-800'>6. รายงานระบบป้องกันการโจรกรรมสินค้า (RFID และเสากันขโมย)</h1><p class='text-sm text-gray-500 mt-2'>สาขา: B018 iStudio Central Rama 9 | ณ วันที่: 18 มิถุนายน 2568</p></div>
-        <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-red-500 pb-2 mb-3 flex items-center'>1. ข้อตรวจพบ (Finding)</h3><div class='space-y-2 text-gray-700'><p><strong>- สินค้ามูลค่าสูงไม่ติดแถบ RFID:</strong> ตรวจพบว่าสินค้าที่จัดแสดงบนชั้นวาง ซึ่งมีมูลค่าสูงหลายรายการ ไม่ได้มีการติดตั้งแถบ RFID สำหรับแจ้งเตือนขโมยสินค้าออกนอกสาขา</p><p><strong>- เสาประตูกันขโมยไม่ทำงาน:</strong> ระบบเสาสัญญาณกันขโมยบริเวณประตูทางเข้า-ออกของสาขา อยู่ในสถานะไม่ทำงาน ไม่ส่งสัญญาณเตือนหากมีสินค้าถูกนำออกจากร้านโดยไม่ชำระเงิน</p></div></div>
-        <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-red-500 pb-2 mb-3 flex items-center'>2. การประเมินความเสี่ยง (Risk Analysis)</h3><div class='bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg'><p>ความเสี่ยงสินค้าสูญหายจากการถูกลักขโมย</p></div></div>
-        <div class='mb-6'><h3 class='text-lg font-bold text-gray-800 border-b-2 border-yellow-500 pb-2 mb-3 flex items-center'>3. ข้อมูลเพิ่มเติมจากสาขา</h3><p class='text-gray-700'>ผู้ปฏิบัติงานที่สาขาแจ้งว่า สาขาจะมีการปรับ Planogram ใหม่ในเร็วๆ นี้ ซึ่งจะมีการแก้ไขและปรับปรุงในหลายส่วน รวมถึงการซ่อมแซมเสาประตูให้กลับมาใช้งานได้ตามปกติ</p></div>
-        <div><h3 class='text-lg font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-3 flex items-center'>4. ข้อเสนอแนะ (Recommendation)</h3><div class='space-y-4'><div class='border-l-4 border-green-500 pl-4'><p class='font-semibold'>ผู้รับผิดชอบหลัก: ผู้ดูแลชาแนล (@พี่โก้ <a href='mailto:pairoj@spvi.co.th' class='text-blue-600 hover:underline'>pairoj@spvi.co.th</a>) และ ผู้จัดการสาขา</p></div><ol class='list-decimal list-inside text-gray-700 space-y-2'><li><strong class='font-semibold'>การติดตามแก้ไข:</strong> ให้ผู้ดูแลชาแนล (พี่โก้) ติดตามการซ่อมแซมเสาประตูกันขโมยในรอบการปรับ Planogram ใหม่นี้ และแจ้งกำหนดการแล้วเสร็จให้ทราบ</li><li><strong class='font-semibold'>การเฝ้าระวัง:</strong> ให้สาขาเฝ้าระวังพื้นที่หน้าร้านในส่วนที่มีความเสี่ยงหยิบขโมบได้ง่ายหรือลับตาคน</li><li><strong class='font-semibold'>การตรวจสอบซ้ำ:</strong> ทีมผู้ตรวจสอบจะทำการติดตามและตรวจสอบการแก้ไขในประเด็นนี้อีกครั้งในรอบการตรวจสอบถัดไป</li></ol></div></div>
-    </div>
-</body>
-</html>
-            "></iframe>
-        </div>
-
-    </div>
-
 </body>
 </html>
